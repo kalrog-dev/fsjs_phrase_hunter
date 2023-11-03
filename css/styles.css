@@ -1,5 +1,9 @@
 /* Main styles */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300');
+
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter-variable.ttf");
+}
 
 /* Variables */
 
@@ -20,7 +24,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
