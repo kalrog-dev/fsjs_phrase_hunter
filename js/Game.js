@@ -16,15 +16,14 @@ class Game {
     this.missed = 0;
   }
 
+  /**
+   * Hide the start overlay and display a random phrase.
+   * @returns {undefined}
+   */
   startGame() {
-    // Hide the start screen
-
-    // Call getRandomPhrase
-
-    // Set active phrase property with the chose phrase
-
-    // Add that phrase to the board with addPhraseToDisplay 
-    // on the activePhrase property
+    document.getElementById("overlay").style.display = "none";
+    this.activePhrase = this.getRandomPhrase();
+    this.activePhrase.addPhraseToDisplay();
   }
 
   /**
@@ -54,9 +53,11 @@ class Game {
 } 
 
 const game = new Game([
-  "Phrase one",
-  "Phrase two",
-  "Phrase three",
-  "Phrase four",
-  "Phrase five",
+  new Phrase("Phrase one"),
+  new Phrase("Phrase two"),
+  new Phrase("Phrase three"),
+  new Phrase("Phrase four"),
+  new Phrase("Phrase five")
 ]);
+
+game.startGame();

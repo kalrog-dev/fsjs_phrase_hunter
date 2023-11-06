@@ -19,7 +19,7 @@ class Phrase {
    * @returns {undefined}
    */
   addPhraseToDisplay() {
-    let html = `<div id="phrase" class="section"><ul>`;
+    let html = "";
     this.phrase.split("").forEach(letter => {
       if (/[a-z]/.test(letter)) {
         html += `<li class="hide letter ${letter}">${letter}</li>`;
@@ -27,7 +27,7 @@ class Phrase {
         html += `<li class="space"> </li>`;
       }
     });
-    html += `</ul></div>`;
+    document.querySelector("#phrase ul").innerHTML = html;
   }
 
   /**
@@ -46,6 +46,3 @@ class Phrase {
 
   }
 }
-
-const ph = new Phrase("Guess this thing");
-ph.addPhraseToDisplay();
