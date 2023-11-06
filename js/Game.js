@@ -50,14 +50,4 @@ class Game {
   gameOver() {
     
   }
-} 
-
-const game = new Game([
-  new Phrase("Phrase one"),
-  new Phrase("Phrase two"),
-  new Phrase("Phrase three"),
-  new Phrase("Phrase four"),
-  new Phrase("Phrase five")
-]);
-
-game.startGame();
+}
