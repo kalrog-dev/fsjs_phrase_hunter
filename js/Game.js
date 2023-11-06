@@ -17,11 +17,23 @@ class Game {
   }
 
   startGame() {
+    // Hide the start screen
 
+    // Call getRandomPhrase
+
+    // Set active phrase property with the chose phrase
+
+    // Add that phrase to the board with addPhraseToDisplay 
+    // on the activePhrase property
   }
 
+  /**
+   * Retrive a random phrase from the phrases array.
+   * @returns {string} A random phrase.
+   */
   getRandomPhrase() {
-
+    const randIndex = Math.floor(Math.random() * this.phrases.length);
+    return this.phrases[randIndex];
   }
 
   handleInteraction() {
@@ -40,3 +52,11 @@ class Game {
     
   }
 } 
+
+const game = new Game([
+  "Phrase one",
+  "Phrase two",
+  "Phrase three",
+  "Phrase four",
+  "Phrase five",
+]);
