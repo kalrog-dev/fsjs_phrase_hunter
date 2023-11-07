@@ -46,6 +46,8 @@ class Game {
       if (phrase.includes(selectedLetter)) {
         // Add chosen class, ...
         btn.classList.add("chosen");
+        game.activePhrase.showMatchedLetter(selectedLetter);
+
       } else {
         // Add wrong class and call removeLife().
         btn.classList.add("wrong");

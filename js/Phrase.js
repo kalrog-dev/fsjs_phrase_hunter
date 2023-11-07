@@ -39,10 +39,15 @@ class Phrase {
   }
 
   /**
-   * Reveal the letters matching the player's selection
+   * Reveal the letters matching the player's selection.
+   * @param {string} selectedLetter - The onscreen keyboard letter selected by the user.
    * @returns {undefined}
    */
-  showMatchedLetter() {
-
+  showMatchedLetter(selectedLetter) {
+    const matchedLetters = document.querySelectorAll(`#phrase .${selectedLetter}`);
+    matchedLetters.forEach(letter => {
+      letter.classList.remove("hide");
+      letter.classList.add("show");
+    });
   }
 }
