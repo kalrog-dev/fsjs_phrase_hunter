@@ -47,7 +47,7 @@ class Game {
         // Add chosen class, ...
         btn.classList.add("chosen");
         game.activePhrase.showMatchedLetter(selectedLetter);
-
+        game.checkForWin() && game.gameOver();
       } else {
         // Add wrong class and call removeLife().
         btn.classList.add("wrong");
@@ -63,8 +63,13 @@ class Game {
     hearts[hearts.length - 1].setAttribute("src", "assets/img/lostHeart.png");
   }
 
+  /**
+   * Check if all phrase letters have been revealed.
+   * @returns {boolean}
+   */
   checkForWin() {
-
+    const letters = [...document.querySelectorAll("#phrase .letter")];
+    return letters.every(letter => letter.classList.contains("show"));
   }
 
   gameOver() {
