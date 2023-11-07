@@ -43,11 +43,10 @@ class Game {
   handleInteraction(event) {
     if (event.target.tagName === "BUTTON") {
       const btn = event.target;
-      btn.setAttribute("disabled", "");
-      const phrase = game.activePhrase.phrase;
       const selectedLetter = btn.textContent;
-    
-      if (phrase.includes(selectedLetter)) {
+      btn.setAttribute("disabled", "");
+
+      if (game.activePhrase.checkLetter(selectedLetter)) {
         btn.classList.add("chosen");
         game.activePhrase.showMatchedLetter(selectedLetter);
         game.checkForWin() && game.gameOver();

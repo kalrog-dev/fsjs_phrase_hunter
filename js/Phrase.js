@@ -32,10 +32,11 @@ class Phrase {
 
   /**
    * Check if the selected letter matches a letter in the phrase.
-   * @returns {undefined}
+   * @param {string} selectedLetter - The onscreen keyboard letter selected by the user.
+   * @returns {boolean}
    */
-  checkLetter() {
-
+  checkLetter(selectedLetter) {
+    return this.phrase.includes(selectedLetter);
   }
 
   /**
