@@ -22,8 +22,8 @@ class Game {
    */
   startGame() {
     document.getElementById("overlay").style.display = "none";
-    this.activePhrase = this.getRandomPhrase();
-    this.activePhrase.addPhraseToDisplay();
+    game.activePhrase = game.getRandomPhrase();
+    game.activePhrase.addPhraseToDisplay();
   }
 
   /**
@@ -35,12 +35,30 @@ class Game {
     return this.phrases[randIndex];
   }
 
-  handleInteraction() {
+  handleInteraction(event) {
+    if (event.target.tagName === "BUTTON") {
+      const btn = event.target;
+      btn.setAttribute("disabled", "");
 
+      // Does phrase include the selected letter?
+      const selectedLetter = btn.textContent;
+      const phrase = game.activePhrase.phrase;
+      if (phrase.includes(selectedLetter)) {
+        // Add chosen class, ...
+        btn.classList.add("chosen");
+      } else {
+        // Add wrong class and call removeLife().
+        btn.classList.add("wrong");
+        game.removeLife();
+      }
+    }
   }
 
   removeLife() {
-
+    game.missed++;
+    game.missed > 4 && game.gameOver();
+    const hearts = document.querySelectorAll('[src*="liveHeart"]');
+    hearts[hearts.length - 1].setAttribute("src", "assets/img/lostHeart.png");
   }
 
   checkForWin() {
@@ -48,6 +66,11 @@ class Game {
   }
 
   gameOver() {
-    
+    const overlay = document.getElementById("overlay");
+    const msg = document.getElementById("game-over-message");
+    overlay.style.display = "inherit";
+    overlay.className = game.missed < 5 ? "win" : "lose";
+    msg.textContent = game.missed <  5 ? "You won!" : "You lost.";
+
   }
 }
