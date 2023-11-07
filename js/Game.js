@@ -35,27 +35,33 @@ class Game {
     return this.phrases[randIndex];
   }
 
+  /**
+   * Check if the current phrase includes the selected letter and then direct the game based on that.
+   * @param {object} event - The event object.
+   * @returns {undefined} 
+   */
   handleInteraction(event) {
     if (event.target.tagName === "BUTTON") {
       const btn = event.target;
       btn.setAttribute("disabled", "");
-
-      // Does phrase include the selected letter?
-      const selectedLetter = btn.textContent;
       const phrase = game.activePhrase.phrase;
+      const selectedLetter = btn.textContent;
+    
       if (phrase.includes(selectedLetter)) {
-        // Add chosen class, ...
         btn.classList.add("chosen");
         game.activePhrase.showMatchedLetter(selectedLetter);
         game.checkForWin() && game.gameOver();
       } else {
-        // Add wrong class and call removeLife().
         btn.classList.add("wrong");
         game.removeLife();
       }
     }
   }
 
+  /**
+   * Remove a life from the scoreboard by replacing a liveHeart.png with a lostHeart.png image.
+   * @returns {undefined}
+   */
   removeLife() {
     game.missed++;
     game.missed > 4 && game.gameOver();
@@ -72,6 +78,10 @@ class Game {
     return letters.every(letter => letter.classList.contains("show"));
   }
 
+  /**
+   * Display the win or loss screen overlay.
+   * @returns {undefined}
+   */
   gameOver() {
     const overlay = document.getElementById("overlay");
     const msg = document.getElementById("game-over-message");
