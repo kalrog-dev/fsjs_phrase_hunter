@@ -63,9 +63,9 @@ class Game {
    */
   removeLife() {
     game.missed++;
-    game.missed > 4 && game.gameOver();
-    const hearts = document.querySelectorAll('[src*="liveHeart"]');
+    const hearts = document.querySelectorAll('[src*="live"]');
     hearts[hearts.length - 1].setAttribute("src", "assets/img/lostHeart.png");
+    game.missed > 4 && game.gameOver();
   }
 
   /**
@@ -78,7 +78,7 @@ class Game {
   }
 
   /**
-   * Display the win or loss screen overlay.
+   * Display the win or loss screen overlay and reset the game.
    * @returns {undefined}
    */
   gameOver() {
@@ -87,6 +87,13 @@ class Game {
     overlay.style.display = "inherit";
     overlay.className = game.missed < 5 ? "win" : "lose";
     msg.textContent = game.missed <  5 ? "You won!" : "You lost.";
-
+    // Reset
+    game.missed = 0;
+    document.querySelectorAll("#phrase li").forEach(li => li.remove());
+    document.querySelectorAll("#qwerty button").forEach(btn => {
+      btn.className = "key";
+      btn.removeAttribute("disabled");
+    });
+    document.querySelectorAll('[src*="lost"]').forEach(img => img.setAttribute("src", "assets/img/liveHeart.png"));
   }
 }
