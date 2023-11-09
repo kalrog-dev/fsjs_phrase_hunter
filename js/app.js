@@ -6,11 +6,11 @@
 
 // Phrases to display and guess.
 const data = [
-  "Phrase one",
-  "Phrase two",
-  "Phrase three",
-  "Phrase four",
-  "Phrase five"
+  "Not all those who wander are lost",
+  "It is never too late to be what you might have been",
+  "Everything you can imagine is real",
+  "There is no friend as loyal as a book",
+  "Facts do not cease to exist because they are ignored"
 ];
 
 // Create the game and phrases instances.
