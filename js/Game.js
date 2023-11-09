@@ -4,14 +4,21 @@
  * {@link https://github.com/kalrog-dev}
  */
 
+const data = [
+  "Not all those who wander are lost",
+  "It is never too late to be what you might have been",
+  "Everything you can imagine is real",
+  "There is no friend as loyal as a book",
+  "Facts do not cease to exist because they are ignored"
+];
+
 /** Class representing the game. */
 class Game {
   /**
-   * Create an instance of game.
-   * @param {Phrase[]} phrases An array of phrase objects.
+   * Create an instance of the game.
    */
-  constructor(phrases) {
-    this.phrases = phrases;
+  constructor() {
+    this.phrases = data.map(phrase => new Phrase(phrase));
     this.activePhrase = null;
     this.missed = 0;
   }
@@ -28,7 +35,7 @@ class Game {
 
   /**
    * Retrive a random phrase from the phrases array.
-   * @returns {string} A random phrase.
+   * @returns {object} A random phrase.
    */
   getRandomPhrase() {
     const randIndex = Math.floor(Math.random() * this.phrases.length);
@@ -36,24 +43,22 @@ class Game {
   }
 
   /**
-   * Check if the current phrase includes the selected letter and then direct the game based on that.
+   * Check if the current phrase includes the selected letter and direct the game based on that.
    * @param {object} event - The event object.
    * @returns {undefined} 
    */
   handleInteraction(event) {
-    if (event.target.tagName === "BUTTON") {
-      const btn = event.target;
-      const selectedLetter = btn.textContent.toUpperCase();
-      btn.setAttribute("disabled", "");
+    const btn = event.target;
+    const selectedLetter = btn.textContent.toUpperCase();
+    btn.setAttribute("disabled", "");
 
-      if (game.activePhrase.checkLetter(selectedLetter)) {
-        btn.classList.add("chosen");
-        game.activePhrase.showMatchedLetter(selectedLetter);
-        game.checkForWin() && game.gameOver();
-      } else {
-        btn.classList.add("wrong");
-        game.removeLife();
-      }
+    if (game.activePhrase.checkLetter(selectedLetter)) {
+      btn.classList.add("chosen");
+      game.activePhrase.showMatchedLetter(selectedLetter);
+      game.checkForWin() && game.gameOver();
+    } else {
+      btn.classList.add("wrong");
+      game.removeLife();
     }
   }
 
