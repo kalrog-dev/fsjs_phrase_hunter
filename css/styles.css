@@ -87,6 +87,13 @@ button {
   margin-top: 15px;
 }
 
+/* Disable user selection */
+#scoreboard ol,
+.letter,
+.key {
+  user-select: none;
+}
+
 /* Title */
 .header {
   color: #3a3f58;
