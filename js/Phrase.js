@@ -20,8 +20,8 @@ class Phrase {
    */
   addPhraseToDisplay() {
     let html = "";
-    this.phrase.split("").forEach(letter => {
-      if (/[a-z]/.test(letter)) {
+    this.phrase.toUpperCase().split("").forEach(letter => {
+      if (/[A-Z]/.test(letter)) {
         html += `<li class="hide letter ${letter}">${letter}</li>`;
       } else {
         html += `<li class="space"> </li>`;
@@ -36,7 +36,7 @@ class Phrase {
    * @returns {boolean}
    */
   checkLetter(selectedLetter) {
-    return this.phrase.includes(selectedLetter);
+    return this.phrase.toUpperCase().includes(selectedLetter);
   }
 
   /**

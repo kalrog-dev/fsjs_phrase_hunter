@@ -43,7 +43,7 @@ class Game {
   handleInteraction(event) {
     if (event.target.tagName === "BUTTON") {
       const btn = event.target;
-      const selectedLetter = btn.textContent;
+      const selectedLetter = btn.textContent.toUpperCase();
       btn.setAttribute("disabled", "");
 
       if (game.activePhrase.checkLetter(selectedLetter)) {
